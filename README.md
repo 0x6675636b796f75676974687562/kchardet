@@ -8,7 +8,8 @@ Character set detector library for the JVM &mdash; like [vidoss/jchardet](https:
  - **UTF-8** detection (with and without BOM).
  - **UTF-16** (BE, LE) detection (with and without BOM).
  - Chinese detection (**GB 2312**, **GBK**, **GB 18030**, **Big5**).
- - Mode Line based detection in source code files of known types, e.g.:
+ - [_Mode Line_](https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html)
+   based detection in source code files of known types, e.g.:
 
 ```python
 #!/usr/bin/env python3
