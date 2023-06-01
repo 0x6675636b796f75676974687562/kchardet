@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: windows-1251 -*-
+
+print("ÀÁÂÃÄÅ¨ÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞ‗")
+print("אבגדהו¸זחטיךכלםמןנסעףפץצקרשתûü‎‏ÿ")

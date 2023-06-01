@@ -1,0 +1,28 @@
+/AssemblyInfo-bom.cs           text working-tree-encoding=UTF-8
+/AssemblyInfo-cyrillic-utf8.cs text working-tree-encoding=UTF-8
+/AssemblyInfo.cs               text working-tree-encoding=UTF-8
+/binary.bin                    binary
+/c++-mfc-bom.rc                binary
+/c++-mfc.rc                    binary
+/chinese-gbk.txt               binary
+/chinese-utf16be-bom.txt       binary
+/chinese-utf16be.txt           binary
+/chinese-utf16le-bom.txt       binary
+/chinese-utf16le.txt           binary
+/chinese-utf8-bom.txt          text working-tree-encoding=UTF-8
+/chinese-utf8.txt              text working-tree-encoding=UTF-8
+/cyrillic-cp1251.txt           text
+/cyrillic-utf16be-bom.txt      binary
+/cyrillic-utf16be.txt          binary
+/cyrillic-utf16le-bom.txt      binary
+/cyrillic-utf16le.txt          binary
+/cyrillic-utf8-bom.txt         text working-tree-encoding=UTF-8
+/empty.txt                     text working-tree-encoding=US-ASCII
+/latin-ascii.txt               text working-tree-encoding=US-ASCII
+/latin-utf16be-bom.txt         binary
+/latin-utf16be.txt             binary
+/latin-utf16le-bom.txt         binary
+/latin-utf16le.txt             binary
+/latin-utf8-bom.txt            text working-tree-encoding=UTF-8
+/malformed-utf8-bom.txt        binary
+/malformed-utf8.txt            binary
