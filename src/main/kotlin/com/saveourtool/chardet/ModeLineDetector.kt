@@ -11,7 +11,7 @@ import kotlin.io.path.useLines
 import kotlin.text.Charsets.ISO_8859_1
 
 /**
- * [Mode Line](https://www.gnu.org/software/emacs/manual/html_node/emacs/Mode-Line.html)
+ * [Mode Line](https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html)
  * based detector.
  */
 class ModeLineDetector(private val readContent: Boolean) : CharsetDetector {
