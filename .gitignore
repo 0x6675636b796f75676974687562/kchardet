@@ -1,5 +1,11 @@
+*.class
 *.iml
 *.swp
+/.classpath
+/.gradle/
 /.idea/
+/.project
 /.run/
+/.settings/
+/build/
 /target/
