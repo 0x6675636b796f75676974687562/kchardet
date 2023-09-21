@@ -84,7 +84,7 @@
             <dependency>
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-assertions-core</artifactId>
-                <version>5.6.2</version>
+                <version>5.7.2</version>
             </dependency>
             <dependency>
                 <groupId>io.kotest</groupId>
