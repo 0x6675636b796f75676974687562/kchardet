@@ -19,7 +19,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.9.10</kotlin.version>
+        <kotlin.version>1.9.20</kotlin.version>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
         <kotlin.code.style>official</kotlin.code.style>
     </properties>
@@ -84,12 +84,12 @@
             <dependency>
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-assertions-core</artifactId>
-                <version>5.7.2</version>
+                <version>5.8.0</version>
             </dependency>
             <dependency>
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-assertions-core-jvm</artifactId>
-                <version>5.7.2</version>
+                <version>5.8.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -145,7 +145,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.2.1</version>
+                    <version>3.2.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.jetbrains.kotlin</groupId>
