@@ -35,12 +35,6 @@ jobs:
             maven-build-
       - name: Maven Install
         run: mvn -B -Dstyle.color=always clean install
-      - name: Code coverage report
-        uses: codecov/codecov-action@v3
-        with:
-          files: '**/target/site/jacoco*/jacoco.xml,**/reports/jacoco/**/*.xml'
-          flags: unittests
-          fail_ci_if_error: true # optional (default = false)
 
         # This step needs a Git repository, so it's impossible to extract it
         # into a separate job (or, otherwise, we'd need to upload the content
