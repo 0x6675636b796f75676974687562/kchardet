@@ -1,0 +1,95 @@
+# vim:ai et ts=2 sts=2 sw=2:
+name: Maven Build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build_and_test:
+    name: Maven Build
+    runs-on: ubuntu-latest
+
+    # A possible workaround for <https://github.com/dorny/test-reporter/issues/168>.
+    permissions:
+      checks: write
+      contents: write
+      pull-requests: write
+      statuses: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 8
+      - name: Cache local Maven repository
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: maven-build-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            maven-build-
+      - name: Maven Install
+        run: mvn -B -Dstyle.color=always clean install
+      - name: Code coverage report
+        uses: codecov/codecov-action@v3
+        with:
+          files: '**/target/site/jacoco*/jacoco.xml,**/reports/jacoco/**/*.xml'
+          flags: unittests
+          fail_ci_if_error: true # optional (default = false)
+
+        # This step needs a Git repository, so it's impossible to extract it
+        # into a separate job (or, otherwise, we'd need to upload the content
+        # of the whole `.git` folder as an artifact).
+      - name: JUnit Tests (dorny/test-reporter@v1)
+        uses: dorny/test-reporter@v1
+        if: ${{ always() }}
+        with:
+          name: JUnit Tests (${{ runner.os }}, dorny/test-reporter@v1)
+          # Comma-separated values.
+          path: "**/target/*-reports/TEST-*.xml"
+          reporter: java-junit
+        # Ignore the "Resource not accessible by integration" error when a PR
+        # originates from a non-collaborator. This is
+        # <https://github.com/dorny/test-reporter/issues/168> which may be
+        # potentially fixed with <https://github.com/dorny/test-reporter/pull/174>.
+        continue-on-error: true
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: xml-test-reports-${{ runner.os }}
+          path: |
+            **/target/*-reports/TEST-*.xml
+          retention-days: 1
+
+
+  report:
+    name: Publish JUnit test results
+    if: ${{ always() }}
+    needs: build_and_test
+    runs-on: ubuntu-latest
+
+    permissions:
+      checks: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/download-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: xml-test-reports-${{ runner.os }}
+
+        # Uses Docker, that's why Linux-only.
+      - name: JUnit Tests (EnricoMi/publish-unit-test-result-action@v2, Linux)
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: ${{ runner.os == 'Linux' }}
+        with:
+          check_name: JUnit Tests (${{ runner.os }}, EnricoMi/publish-unit-test-result-action@v2)
+          junit_files: |
+            **/target/*-reports/TEST-*.xml
